@@ -61,6 +61,7 @@ ArucoSimple::ArucoSimple(ros::NodeHandle _comm_nh, ros::NodeHandle _private_nh)
     // pixel_pub = nh.advertise<geometry_msgs::PointStamped>("pixel", 10);
 
     client = nh.serviceClient<mavros_msgs::LandingTarget>("/mavros/set_landing_target");
+    aruco_pub = nh.advertise<aruco_msgs::ArucoFov>("/aruco/fov", 10);
 
     pnh.param<double>("marker_size", marker_size, 0.05);
     pnh.param<int>("marker_id", marker_id, 0);
@@ -283,6 +284,14 @@ void ArucoSimple::image_callback(const sensor_msgs::ImageConstPtr &msg) {
                             } else {
                                 ROS_ERROR("Failed to call service landing target");
                             }
+
+                            aruco_msgs::ArucoFov msg;
+                            msg.header.stamp = ros::Time::now();
+                            msg.arucoId = markers[i].id;
+                            msg.fovx = xoffset;
+                            msg.fovy = yoffset;
+                            aruco_pub.publish(msg);
+
                         }
                     }
                     // Otherwise draw a red square

@@ -14,7 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   visualization_msgs
   mavros_msgs
-        nodelet
+  nodelet
 )
 
 generate_dynamic_reconfigure_options(

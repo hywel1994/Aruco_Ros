@@ -24,6 +24,7 @@
 #include <aruco_ros/ArucoThresholdConfig.h>
 
 #include <mavros_msgs/LandingTarget.h>
+#include <aruco_msgs/ArucoFov.h>
 
 #define pi 3.1415926
 
@@ -72,6 +73,8 @@ private:
     ros::NodeHandle pnh;
     image_transport::ImageTransport it;
     image_transport::Subscriber image_sub;
+    ros::Publisher aruco_pub;
+    
 
     dynamic_reconfigure::Server<aruco_ros::ArucoThresholdConfig> dyn_rec_server;
 
