@@ -1,25 +1,5 @@
 aruco_ros
 =========
-
-Software package and ROS wrappers of the [Aruco][1] Augmented Reality marker detector library.
-
-
-### Features
-
- * High-framerate tracking of AR markers
- 
- * Generate AR markers with given size and optimized for minimal perceptive ambiguity (when there are more markers to track)
- 
- * Enhanced precision tracking by using boards of markers
- 
- * ROS wrappers
-
-
-### Applications
-
- * Object pose estimation
- * Visual servoing: track object and hand at the same time
-
 ### ROS API
 
 #### Messages
@@ -36,20 +16,24 @@ Software package and ROS wrappers of the [Aruco][1] Augmented Reality marker det
         Header header
         aruco_ros/Marker[] markers
 
-### Test it with REEM
+### Start
 
 
- * Start the `single` nodelet
+ * Start the nodelet
  
     ```
+    roslaunch uvc_camera camera_nodelet.launch
     roslaunch aruco_ros aruco_nodelet.launch
     ```
 
-* Start the `single` node
+* Start the node
  
     ```
+    roslaunch uvc_camera camera_node.launch
     roslaunch aruco_ros aruco_node.launch
     ```
+
+
 
 
 
