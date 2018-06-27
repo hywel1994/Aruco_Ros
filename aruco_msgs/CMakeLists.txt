@@ -6,6 +6,11 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   std_msgs)
 
+add_service_files(
+  FILES
+  LandingTarget.srv
+)
+
 add_message_files( FILES Marker.msg MarkerArray.msg ArucoFov.msg)
 generate_messages( DEPENDENCIES std_msgs geometry_msgs )
 

@@ -23,7 +23,7 @@
 #include <dynamic_reconfigure/server.h>
 #include <aruco_ros/ArucoThresholdConfig.h>
 
-#include <mavros_msgs/LandingTarget.h>
+#include <aruco_msgs/LandingTarget.h>
 #include <aruco_msgs/ArucoFov.h>
 
 #define pi 3.1415926

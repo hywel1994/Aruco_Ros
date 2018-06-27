@@ -60,7 +60,7 @@ ArucoSimple::ArucoSimple(ros::NodeHandle _comm_nh, ros::NodeHandle _private_nh)
     // marker_pub = nh.advertise<visualization_msgs::Marker>("marker", 10);
     // pixel_pub = nh.advertise<geometry_msgs::PointStamped>("pixel", 10);
 
-    client = nh.serviceClient<mavros_msgs::LandingTarget>("/mavros/set_landing_target");
+    client = nh.serviceClient<aruco_msgs::LandingTarget>("/mavros/set_landing_target");
     aruco_pub = nh.advertise<aruco_msgs::ArucoFov>("/aruco/fov", 10);
 
     pnh.param<double>("marker_size", marker_size, 0.05);
@@ -273,7 +273,7 @@ void ArucoSimple::image_callback(const sensor_msgs::ImageConstPtr &msg) {
                                             yoffset, distance, markers[i].getCenter().x, markers[i].getCenter().y);
                             }
 
-                            mavros_msgs::LandingTarget srv;
+                            aruco_msgs::LandingTarget srv;
                             srv.request.target_num = 2;
                             srv.request.angle_x = xoffset;
                             srv.request.angle_y = yoffset;

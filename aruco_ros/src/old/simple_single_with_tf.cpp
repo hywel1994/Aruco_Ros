@@ -51,7 +51,7 @@ or implied, of Rafael Muñoz Salinas.
 #include <dynamic_reconfigure/server.h>
 #include <aruco_ros/ArucoThresholdConfig.h>
 
-#include <mavros_msgs/LandingTarget.h>
+#include <aruco_msgs/LandingTarget.h>
 
 #define pi 3.1415926
 
@@ -155,7 +155,7 @@ public:
     marker_pub = nh.advertise<visualization_msgs::Marker>("marker", 10);
     pixel_pub = nh.advertise<geometry_msgs::PointStamped>("pixel", 10);
 
-    client = nh.serviceClient<mavros_msgs::LandingTarget>("/mavros/set_landing_target");
+    client = nh.serviceClient<aruco_msgs::LandingTarget>("/mavros/set_landing_target");
 
     nh.param<double>("marker_size", marker_size, 0.05);
     nh.param<int>("marker_id", marker_id, 0);
@@ -574,7 +574,7 @@ public:
       cv::Point cent(10, vOffset);
       cv::putText(in, cad, cent, cv::FONT_HERSHEY_SIMPLEX, std::max(0.5f,float(lineWidth)*0.3f), color, lineWidth);
 
-      mavros_msgs::LandingTarget srv;
+      aruco_msgs::LandingTarget srv;
       srv.request.target_num = 2;
       srv.request.angle_x = X;
       srv.request.angle_y = Y;

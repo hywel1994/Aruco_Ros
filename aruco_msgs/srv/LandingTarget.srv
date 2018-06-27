@@ -1,0 +1,7 @@
+int64 target_num
+float64 angle_x
+float64 angle_y
+float64 size_x
+float64 size_y
+---
+int8 landing_target_sent

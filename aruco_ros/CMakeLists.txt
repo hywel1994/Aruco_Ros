@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(aruco_ros)
 
+find_package(OpenCV REQUIRED)
+
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   dynamic_reconfigure
@@ -35,7 +37,7 @@ include_directories(
 add_library(nodelet_aruco_single src/nodelets.cpp
         src/simple_single.cpp
         src/aruco_ros_utils.cpp)
-target_link_libraries(nodelet_aruco_single ${catkin_LIBRARIES})
+target_link_libraries(nodelet_aruco_single ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 # add_library(aruco_ros_utils src/aruco_ros_utils.cpp)
 # target_link_libraries(aruco_ros_utils ${catkin_LIBRARIES})
@@ -44,7 +46,7 @@ add_executable(aruco_single src/single_aruco_node.cpp
                       src/simple_single.cpp
                       src/aruco_ros_utils.cpp)
 add_dependencies(aruco_single ${PROJECT_NAME}_gencfg)
-target_link_libraries(aruco_single ${catkin_LIBRARIES})
+target_link_libraries(aruco_single ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 # add_executable(double src/simple_double.cpp
 #                       src/aruco_ros_utils.cpp)
